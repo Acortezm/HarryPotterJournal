@@ -16,8 +16,10 @@ button.addEventListener("click", function(){
 function anounceWinner(){
     if (randomNumber1 > randomNumber2){
         title.textContent = "🚩 Player 1 wins!"
-    } else {
+    } else if (randomNumber2 > randomNumber1){
         title.textContent = "Player 2 wins 🚩"
+    } else {
+        title.textContent = "Draw"
     }
 }
 
