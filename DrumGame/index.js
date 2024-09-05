@@ -5,16 +5,18 @@ for (i = 0; i < buttons.length; i++){
 
     buttons[i].addEventListener("click", function(){
         const button = this.innerHTML;
-        keyMatch(button)
+        makeSound(button)
+        buttonAnimation(button)
     })
 }
 
 document.addEventListener('keydown', function(event) {
-    keyMatch(event.key)
+    makeSound(event.key)
+    buttonAnimation(event.key)
   });
     
 
-function keyMatch(key){
+function makeSound(key){
     switch(key){
         case "w":
             const crash = new Audio("./sounds/crash.mp3");
@@ -49,5 +51,13 @@ function keyMatch(key){
             console.log("Wrong key")
     }
 
+}
+
+function buttonAnimation(currentKey){
+    const currentButton = document.querySelector("."+currentKey)
+    currentButton.classList.add("pressed")
+    setTimeout(function(){
+        currentButton.classList.remove("pressed")
+    }, 200)
 }
 
