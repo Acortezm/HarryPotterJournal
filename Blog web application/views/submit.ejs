@@ -1,0 +1,15 @@
+<%- include("./partials/header.ejs")  %>
+
+<div class="main-container">
+    
+    <form action="/" method="POST">
+        <label for="title"> Entry Title</label>
+        <input type="text" id="title" name="title"><br><br>
+        <label for="content"> Entry Content</label>
+        <input type="text" id="content" name="content"><br><br>
+        <button type="submit">save</button>
+        <button type="button"><a href="/">discard</a></button>
+    </form>
+</div>
+
+<%- include("./partials/footer.ejs") %>

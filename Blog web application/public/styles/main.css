@@ -1,0 +1,26 @@
+.main-container{
+    height: 80vh;
+}
+
+.form-container {
+    display: grid;
+    grid-template-rows: 2rem 5rem;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+table{
+    display: inline-block;
+}
+
+.header{
+    height: 13vh;
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+footer{
+    height: 7vh;
+    background-color: antiquewhite;
+    text-align: center;
+}
