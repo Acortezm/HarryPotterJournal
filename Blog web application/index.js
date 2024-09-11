@@ -10,20 +10,24 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get("/", (req, res) => {
-    res.render("index.ejs")
+    res.render("index.ejs", {entries : entries})
+    console.log("get/")
 })
 
 app.get("/submit", (req, res) => {
     res.render("submit.ejs")
 })
 
-app.post("/submit", (req, res) => {
+app.post("/", (req, res) => {
     entries.push(req.body)
     res.render("submit.ejs")
-    console.log(entries)
+    console.log(req.body, entries)
 
 })
 
+app.get("/entries/:id", (req, res)=>{
+    res.send("working on it")
+})
 
 
 app.listen(port, () =>{

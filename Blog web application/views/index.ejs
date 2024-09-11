@@ -7,13 +7,17 @@
         <button><a href="/submit"> New Entry</a></button>
         <table>
             <tbody>
+                <% if(locals.entries && locals.entries.length > 0){ %>
+                    <% for (entry = 0; entry < entries.length; entry++){%>
+                        <tr>
+                            <td> <a href="/entries/<%= entry %>"> <%= entries[entry].title  %> </a></td>
+                            <td> <a href="/"> Delete</a></td>
+                        </tr>
+                    <%} %>
+                <% } else { %>
+                    <h1>no entries</h1>
+                <% } %>
                 <tr>
-                    <td> <a href="/"> Entry 1 </a></td>
-                    <td> <a href="/"> DELETE </a></td>
-                </tr>
-                <tr></tr>
-                    <td><a href="/"> Entry 2 </a></td>
-                    <td> <a href="/"> DELETE </a></td>
                 </tr>
             </tbody>
             <tfoot></tfoot>
