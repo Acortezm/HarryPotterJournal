@@ -4,14 +4,15 @@
     <h1>BLOG WEB APPLICATION</h1>
     <div class="form-container">
         <h2>Previous Entries</h2>
-        <button><a href="/submit"> New Entry</a></button>
+        <button><a href="/entries"> New Entry</a></button>
         <table>
             <tbody>
                 <% if(locals.entries && locals.entries.length > 0){ %>
                     <% for (entry = 0; entry < entries.length; entry++){%>
-                        <tr>
+                        <tr><%# I need to send the index so I can find this entry in the array %>
                             <td> <a href="/entries/<%= entry %>"> <%= entries[entry].title  %> </a></td>
-                            <td> <a href="/"> Delete</a></td>
+                            <td><form action="/entries/<%= entry %>" method="post">
+                                <button type="submit">DELETE</button></form></td>
                         </tr>
                     <%} %>
                 <% } else { %>
