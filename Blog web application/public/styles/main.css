@@ -2,21 +2,19 @@
     height: 80vh;
 }
 
-/* .form-container {
-    display: grid;
-    grid-template-rows: 2rem 5rem;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+#custom-entries-display{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 50%;
+    align-items: left;
+    justify-content: center;
 }
 
-table{
-    margin-top: 50px;
-    display: inline-block;
+.custom-display{
+    display: flex;
+    width: 100%;
+    align-items:center;
+    justify-content: space-between;
 }
-
-.header{
-    height: 13vh;
-    background-color: antiquewhite;
-    text-align: center;
-} */
 
