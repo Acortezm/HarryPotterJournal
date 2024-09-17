@@ -1,0 +1,68 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: "Arial", sans-serif;
+}
+
+#first-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.main-container{
+    margin-top: 8rem;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    min-height: 60vh;
+}
+
+.form-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 4rem;
+    height: 100%;
+}
+
+.chapters-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+}
+
+.books-label {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+.chapter-card{
+    height: 20%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: solid gray;
+}
+
+.chapter-title{
+    margin: 0.5rem 0;
+}
+
+.header{
+    background-color: blue;
+    height: 10vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+
+.footer{
+    background-color: blue;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+
