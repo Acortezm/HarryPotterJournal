@@ -7,7 +7,7 @@
             <% chapters.forEach(chapter => {%>
                 <div class="chapter-card">
                     <input class="chapter-title" id="books" type="submit" value="<%= chapter.attributes.title %>" formaction="/book/:id">
-                    <p><%= chapter.attributes.summary.slice(0,200) %></p>
+                    <p><%= chapter.attributes.summary? chapter.attributes.summary.slice(0,200) : "Sumary not available"%></p>
                 </div>          
             <% }); %>
             <%  %>
