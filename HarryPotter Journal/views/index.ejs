@@ -6,9 +6,11 @@
         <% let bookCount = 1 %>
         <% if(locals.books){ books.forEach(book => { %>
             <div>
-                <input id="books" type="submit" value="<%=book.attributes.title%>" formaction="/chapters">
-                <img class="book-covers" src="/img/book<%=bookCount.toString()%>.jpg" alt="">
-                <p><%= book.attributes.summary.slice(0,100)%>...</p>
+                <input id="books" type="submit" value="<%=book.attributes.title%>" formaction="/chapters/<%= bookCount - 1 %>"> <%# to identify the index of the book id in the array (read next line) %>
+                <input type="hidden" name="bookId" value="<%=book.id%>"><%# It will send me an array with every book id which I wil need to get their chapters%>
+                <img class="book-covers" src="/img/book<%=bookCount%>.jpg" alt="">
+                <p class="book-description"><%= book.attributes.summary.slice(0,100)%>...</p>
+                <span class="book-date"> <strong>Release Date: </strong><%=book.attributes.release_date%></span>
                 <%bookCount++%>
             </div>
         <%}); } else { %>

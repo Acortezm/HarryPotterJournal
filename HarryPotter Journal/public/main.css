@@ -61,6 +61,19 @@ body{
 
 }
 
+.book-description{
+    text-align: justify;
+}
+
+.book-date{
+    clear: left;
+    display: block;
+    font-size: small;
+    /* font-style: italic; */
+    font-family: serif;
+    text-align: right;
+}
+
 .header{
     background-color: blue;
     height: 10vh;
