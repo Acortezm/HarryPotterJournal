@@ -1,32 +1,19 @@
 <%- include("partials/header.ejs") %>
 
 <div class="main-container">
-    <form class="chapters-container" action="/" method="get">
-        <label for="books"> Chapters </label>
-        <div class="chapter-card">
-            <input class="chapter-title" id="books" type="submit" value="The boy who lived" formaction="/book/:id">
-            <p>In the first chapter, we are introduced the Dursley family: Mr. and Mrs. Dursley and his son Dudley...</p>
-        </div>
-        <div class="chapter-card">
-            <input class="chapter-title" id="books" type="submit" value="The boy who lived" formaction="/book/:id">
-            <p>In the first chapter, we are introduced the Dursley family: Mr. and Mrs. Dursley and his son Dudley...</p>
-        </div>
-        <div class="chapter-card">
-            <input class="chapter-title" id="books" type="submit" value="The boy who lived" formaction="/book/:id">
-            <p>In the first chapter, we are introduced the Dursley family: Mr. and Mrs. Dursley and his son Dudley...</p>
-        </div>
-        <div class="chapter-card">
-            <input class="chapter-title" id="books" type="submit" value="The boy who lived" formaction="/book/:id">
-            <p>In the first chapter, we are introduced the Dursley family: Mr. and Mrs. Dursley and his son Dudley...</p>
-        </div>
-        <div class="chapter-card">
-            <input class="chapter-title" id="books" type="submit" value="The boy who lived" formaction="/book/:id">
-            <p>In the first chapter, we are introduced the Dursley family: Mr. and Mrs. Dursley and his son Dudley...</p>
-        </div>
-        <div class="chapter-card">
-            <input class="chapter-title" id="books" type="submit" value="The boy who lived" formaction="/book/:id">
-            <p>In the first chapter, we are introduced the Dursley family: Mr. and Mrs. Dursley and his son Dudley...</p>
-        </div>
+    <form class="form-container" action="/" method="get">
+        <label class="books-label" for="books"> Books</label>
+        <% let bookCount = 1 %>
+        <% if(locals.books){ books.forEach(book => { %>
+            <div>
+                <input id="books" type="submit" value="<%=book.attributes.title%>" formaction="/chapters">
+                <img class="book-covers" src="/img/book<%=bookCount.toString()%>.jpg" alt="">
+                <p><%= book.attributes.summary.slice(0,100)%>...</p>
+                <%bookCount++%>
+            </div>
+        <%}); } else { %>
+            <h3>Failed to load</h3>
+        <% } %>
     </form>
 </div>
 

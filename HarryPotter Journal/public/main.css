@@ -1,3 +1,7 @@
+body{
+    height: 100%;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -10,10 +14,10 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    justify-content: space-between;
 }
 
 .main-container{
-    margin-top: 8rem;
     padding: 1rem 2rem;
     box-sizing: border-box;
     min-height: 60vh;
@@ -21,9 +25,9 @@
 
 .form-container{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 4rem;
+    gap: 2rem;
     height: 100%;
 }
 
@@ -36,7 +40,8 @@
 
 .books-label {
     grid-column-start: 1;
-    grid-column-end: 5;
+    grid-column-end: -1;
+    margin-top: 1rem;
 }
 
 .chapter-card{
@@ -48,6 +53,12 @@
 
 .chapter-title{
     margin: 0.5rem 0;
+}
+
+.book-covers{
+    width: 5rem;
+    float: inline-start;
+
 }
 
 .header{
@@ -62,7 +73,37 @@
 
 .footer{
     background-color: blue;
-    padding: 1rem 2rem;
+    height: 8vh;
+    text-align: center;
     box-sizing: border-box;
+    justify-self: baseline;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
+@media (max-width: 600px){
+    .form-container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 870px){
+    .form-container{
+        display: grid;
+        grid-template-rows: auto 1fr 1fr auto;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 3rem;
+    }
+}
+
+@media (min-width: 870px) and (max-width: 1200px){
+    .form-container{
+        display: grid;
+        grid-template-rows: auto 1fr 1fr auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 3rem;
+    }
+}
