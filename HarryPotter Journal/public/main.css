@@ -28,6 +28,8 @@ body{
 header{
     display: flex;
     flex-direction: column;
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
 }
 
 #header {
@@ -36,6 +38,8 @@ header{
     position: relative; /* Set relative position to contain the absolute element */
     display: inline-block;
     height: 25vh;
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
 }
 
 .header-title{
@@ -57,7 +61,7 @@ header{
     width: 30rem;
     /* z-index: -1; */
     position: absolute;
-    top: 43%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* object-fit: scale-down; */
@@ -116,6 +120,18 @@ img.divider {
     height: 25rem;
     padding-left: 5%;
 }
+
+.carousel-caption > h1, p {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    width: 21rem;
+
+}
+
+.carousel-caption > h1{
+    font-style: italic;
+}
 /*************** BOOK PAGE STYLES ***************/
 
 #first-container{
@@ -157,14 +173,24 @@ img.divider {
     grid-column-start: 1;
     grid-column-end: -1;
     margin-top: 1rem;
-    font-family: primary;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-style: italic;
     font-size: 3rem;
 }
 
+input#books {
+    font-family: 'Lora';
+    color: white;
+    background-color: unset;
+    margin: 10px 8px 20px 8px;
+    margin: 5px;
+    font-weight: 500;
+}
+
 .book-covers{
-    width: 5rem;
-    float: inline-start;
-    
+    width: 13rem;
+    margin-bottom: 20px;    
 }
 
 .book-date{
@@ -176,6 +202,16 @@ img.divider {
     text-align: right;
 }
 
+div#book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 5%;
+    box-sizing: border-box;
+}
+
 .chapters-container{
     display: flex;
     flex-direction: column;
@@ -185,7 +221,8 @@ img.divider {
 }
 
 .chapters-container > label{
-    font-family: primary;
+    font-family: "Lora", serif;
+    font-style: italic;
     font-size: 3rem;
     color: white
 }
@@ -201,22 +238,23 @@ img.divider {
     margin: 0.5rem 0;
 }
 
+.chapter-card > p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
 
 .book-description{
     text-align: justify;
+    margin: 0px 5px;
+    padding: 0px 5px;
 }
 
 
 
-.footer{
-    background-color: blue;
-    height: 8vh;
-    text-align: center;
-    box-sizing: border-box;
-    justify-self: baseline;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+footer > ul > li > a {
+    color: rgb(190, 190, 190) !important;
 }
 
 /*************** MEDIA QUERY STYLES ***************/
@@ -238,22 +276,17 @@ img.divider {
     }
 }
 
-@media (min-width: 600px) and (max-width: 870px){
+@media (min-width: 600px) and (max-width: 835px){
+    .form-container{
+        grid-template-columns: 1fr;
+    }
+}
 
-
+@media (min-width: 870px) and (max-width: 1230px){
     .form-container{
         display: grid;
         grid-template-rows: auto 1fr 1fr auto;
         grid-template-columns: 1fr 1fr;
-        margin-top: 3rem;
-    }
-}
-
-@media (min-width: 870px) and (max-width: 1200px){
-    .form-container{
-        display: grid;
-        grid-template-rows: auto 1fr 1fr auto;
-        grid-template-columns: 1fr 1fr 1fr;
         margin-top: 3rem;
     }
 }
