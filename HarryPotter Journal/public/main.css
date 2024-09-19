@@ -25,7 +25,12 @@ body{
 
 
 /************** HEADER STYLES ***************/
-header {
+header{
+    display: flex;
+    flex-direction: column;
+}
+
+#header {
     background-color: black; /* Make sure your background is black */
     text-align: center;
     position: relative; /* Set relative position to contain the absolute element */
@@ -52,7 +57,7 @@ header {
     width: 30rem;
     /* z-index: -1; */
     position: absolute;
-    top: 50%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* object-fit: scale-down; */
@@ -80,7 +85,6 @@ nav {
     font-optical-sizing: auto;
     font-weight: 200;
     font-style: normal;
-    font-size: 80%;
 }
 
 .nav-btn>a{
@@ -106,6 +110,14 @@ img.divider {
     height: 1rem;
 }
 
+.carousel-item > img {
+    width: 100%;
+    vertical-align: middle;
+    height: 25rem;
+    padding-left: 5%;
+}
+/*************** BOOK PAGE STYLES ***************/
+
 #first-container{
     min-height: 100vh;
     display: flex;
@@ -116,20 +128,52 @@ img.divider {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; */
+    background-color: black;
 }
 
 .main-container{
     padding: 1rem 2rem;
     box-sizing: border-box;
     min-height: 60vh;
+    display: flex;
+    justify-content: center;
 }
 
 .form-container{
     display: grid;
     grid-template-rows: auto 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     height: 100%;
+    width: 70%;
+}
+
+.form-container > label, input, p, span{
+    color: white;
+}
+
+
+.books-label {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    margin-top: 1rem;
+    font-family: primary;
+    font-size: 3rem;
+}
+
+.book-covers{
+    width: 5rem;
+    float: inline-start;
+    
+}
+
+.book-date{
+    clear: left;
+    display: block;
+    font-size: small;
+    /* font-style: italic; */
+    font-family: serif;
+    text-align: right;
 }
 
 .chapters-container{
@@ -137,12 +181,13 @@ img.divider {
     flex-direction: column;
     gap: 1rem;
     height: 100%;
+    width: 70%;
 }
 
-.books-label {
-    grid-column-start: 1;
-    grid-column-end: -1;
-    margin-top: 1rem;
+.chapters-container > label{
+    font-family: primary;
+    font-size: 3rem;
+    color: white
 }
 
 .chapter-card{
@@ -156,24 +201,11 @@ img.divider {
     margin: 0.5rem 0;
 }
 
-.book-covers{
-    width: 5rem;
-    float: inline-start;
-    
-}
 
 .book-description{
     text-align: justify;
 }
 
-.book-date{
-    clear: left;
-    display: block;
-    font-size: small;
-    /* font-style: italic; */
-    font-family: serif;
-    text-align: right;
-}
 
 
 .footer{
@@ -186,6 +218,8 @@ img.divider {
     bottom: 0;
     width: 100%;
 }
+
+/*************** MEDIA QUERY STYLES ***************/
 
 @media (max-width: 600px){
 
