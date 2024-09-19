@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'primary'; /* The name you'll use in your CSS */
+    src: url('/fonts/ParryHotter.ttf') format('truetype'); /* Path to your font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'secondary'; /* The name you'll use in your CSS */
+    src: url('/fonts/MagicSchoolOne.ttf') format('truetype'); /* Path to your font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
 body{
     height: 100%;
 }
@@ -9,12 +23,99 @@ body{
   font-family: "Arial", sans-serif;
 }
 
+
+/************** HEADER STYLES ***************/
+header {
+    background-color: black; /* Make sure your background is black */
+    text-align: center;
+    position: relative; /* Set relative position to contain the absolute element */
+    display: inline-block;
+    height: 25vh;
+}
+
+.header-title{
+    font-family: 'primary', Arial, sans-serif;
+    color: white;
+    z-index: 1;
+    position: absolute; /* Allows the h1 to be positioned over the image */
+    top: 50%; /* Adjust position: moves the h1 vertically */
+    left: 50%; /* Adjust position: moves the h1 horizontally */
+    transform: translate(-50%, -50%); /* Center the h1 */
+    font-size: 2rem; /* Adjust font size as needed */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: add shadow for readability */    
+}
+
+
+#header-logo {
+    border-radius: 50%;
+    height: 90%;
+    width: 30rem;
+    /* z-index: -1; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* object-fit: scale-down; */
+}
+
+/*************** NAVBAR STYLES ***************/
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* box-shadow: 0px -2px 10px #08141B; */
+}
+
+.nav-btn{
+    color: white;
+    background-color: black;
+    border: solid black;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 80%;
+}
+
+.nav-btn>a{
+    text-decoration: none;
+    color: white;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+img.star-img {
+    height: 1rem;
+    width: 1rem;
+}
+
+img.divider.right {
+    transform: scaleX(-1);
+}
+
+img.divider {
+    width: 15%;
+    height: 1rem;
+}
+
 #first-container{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 3rem;
     justify-content: space-between;
+    /* background-image: url("/img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
 }
 
 .main-container{
@@ -58,7 +159,7 @@ body{
 .book-covers{
     width: 5rem;
     float: inline-start;
-
+    
 }
 
 .book-description{
@@ -74,15 +175,6 @@ body{
     text-align: right;
 }
 
-.header{
-    background-color: blue;
-    height: 10vh;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 1rem 2rem;
-    box-sizing: border-box;
-}
 
 .footer{
     background-color: blue;
@@ -96,14 +188,25 @@ body{
 }
 
 @media (max-width: 600px){
+
     .form-container{
         display: flex;
         flex-direction: column;
         margin-top: 3rem;
     }
+
+    #header-logo {
+        width: 20rem;
+    }
+
+    nav{
+        display: none;
+    }
 }
 
 @media (min-width: 600px) and (max-width: 870px){
+
+
     .form-container{
         display: grid;
         grid-template-rows: auto 1fr 1fr auto;
@@ -120,3 +223,24 @@ body{
         margin-top: 3rem;
     }
 }
+
+@media (min-height: 900px){
+    #header-logo{
+        height: 14rem;  
+    }
+}
+
+
+/* @media (min-height: 750px) and (min-height: 750px){
+    nav {
+        margin-top: 2%;
+    }
+
+    header {
+        height: 22vh;
+    }
+
+    header img {
+        height: 13rem;
+    }
+} */
