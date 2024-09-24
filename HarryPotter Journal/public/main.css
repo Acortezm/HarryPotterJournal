@@ -14,6 +14,7 @@
 
 body{
     height: 100%;
+    line-height: 1.6;
 }
 
 *{
@@ -153,6 +154,8 @@ img.divider {
     min-height: 60vh;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form-container{
@@ -164,7 +167,10 @@ img.divider {
     width: 70%;
 }
 
-.form-container > label, input, p, span{
+.form-container > label,
+.form-container > input,
+.form-container > p,
+.form-container > span {
     color: white;
 }
 
@@ -212,6 +218,10 @@ div#book-card {
     box-sizing: border-box;
 }
 
+
+/*CHAPTER PAGE STYLE*/
+
+
 .chapters-container{
     display: flex;
     flex-direction: column;
@@ -220,12 +230,33 @@ div#book-card {
     width: 70%;
 }
 
-.chapters-container > label{
+.sub-title{
     font-family: "Lora", serif;
     font-style: italic;
     font-size: 3rem;
     color: white
 }
+
+.book-info{ /*Book info in chapters page*/
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 0.5fr 1fr 1fr;
+    width: 70%;
+}
+
+.book-info img {
+    vertical-align: middle;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    width: 100%;
+    padding: 10%;
+    box-sizing: border-box;
+}
+
+.book-info p{
+    width: 100%;
+}
+
 
 .chapter-card{
     height: 20%;
@@ -252,6 +283,25 @@ div#book-card {
 }
 
 
+/*EDIT PAGE STYLE*/
+
+.edit-container {
+    width: 70%;
+    background-color: #100c1f;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 21px rgb(108 104 188);
+    display: grid;
+    gap: 1rem;
+    height: 50vh;
+    justify-content: space-around;
+    grid-template-rows: 0.5fr 3fr 0.5fr;
+    grid-template-columns: 1fr;
+}
+
+
+
+/* FOOTER STYLE*/
 
 footer > ul > li > a {
     color: rgb(190, 190, 190) !important;
