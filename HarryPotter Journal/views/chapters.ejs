@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+</header>
+<body>
+<div class="main-container">
+    <section class="book-info">
+        <img src="<%= locals.bookImg ? bookImg : ''%>" alt="">
+        <% if(locals.bookInfo){ %>
+            <h1 class="sub-title"><%= bookInfo.title%> </h1>
+            <p><%= bookInfo.summary%></p>
+        <% }%>
+        <div>
+            <h2>My thoughts</h2>
+            <p>No thoughts found</p>
+            <button><a href="/">Add thoughts</a></button>
+        </div>
+    </section>
+    <form class="chapters-container" action="/" method="get">
+        <label for="books" class="sub-title"> Chapters </label>
+        <% if (locals.chapters) {%>
+            <% chapters.forEach(chapter => {%>
+                <div class="chapter-card">
+                    <input class="chapter-title" id="books" type="submit" value="<%= chapter.attributes.title %>" formaction="/chapter/edit/:id">
+                    <p><%= chapter.attributes.summary? chapter.attributes.summary.slice(0,200) : "Sumary not available"%></p>
+                </div>          
+            <% }); %>
+            <%  %>
+        <% }else { %>
+            <h3>Something went wrong :c Sorry mum</h3>
+        <% } %>
+    </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

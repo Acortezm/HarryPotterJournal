@@ -1,0 +1,26 @@
+<%- include("./partials/header.ejs")  %>
+
+<div class="form-container">
+    
+    <% if(locals.entries){ %>
+        <form action="/entries/<%= index %>" method="post" class="custom-form" >
+            <label for="title" class="custom-label">Title</label>
+            <input type="text" id="title" name="title" value="<%= entries.title%>" class="custom-input-title"><br><br>
+            <label for="content" class="custom-label">Content</label>
+            <textarea type="text" id="content" name="content"  class="custom-input"><%= entries.content%>
+            </textarea> <br><br>
+        <% } else { %>
+            <form action="/" method="POST" class="custom-form">
+                <label for="title" class="custom-label">Title</label>
+                <input type="text" id="title" name="title" class="custom-input-title"><br><br>
+                <label for="content" class="custom-label">Content</label>
+                <textarea type="text" id="content" name="content" class="custom-input"></textarea><br><br>
+        <% } %>
+        <div class="custom-btn-container">
+        <button type="submit" class="btn btn-outline-success custom-btn">Save</button>
+        <button type="button" class="btn btn-outline-secondary custom-btn" id="discard-btn"><a href="/">Discard</a></button>
+        </div>
+    </form>
+</div>
+
+<%- include("./partials/footer.ejs") %>

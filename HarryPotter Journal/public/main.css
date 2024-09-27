@@ -1,0 +1,363 @@
+@font-face {
+    font-family: 'primary'; /* The name you'll use in your CSS */
+    src: url('/fonts/ParryHotter.ttf') format('truetype'); /* Path to your font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'secondary'; /* The name you'll use in your CSS */
+    src: url('/fonts/MagicSchoolOne.ttf') format('truetype'); /* Path to your font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    height: 100%;
+    line-height: 1.6;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: "Arial", sans-serif;
+}
+
+
+/************** HEADER STYLES ***************/
+header{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
+}
+
+#header {
+    background-color: black; /* Make sure your background is black */
+    text-align: center;
+    position: relative; /* Set relative position to contain the absolute element */
+    display: inline-block;
+    height: 25vh;
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
+}
+
+.header-title{
+    font-family: 'primary', Arial, sans-serif;
+    color: white;
+    z-index: 1;
+    position: absolute; /* Allows the h1 to be positioned over the image */
+    top: 50%; /* Adjust position: moves the h1 vertically */
+    left: 50%; /* Adjust position: moves the h1 horizontally */
+    transform: translate(-50%, -50%); /* Center the h1 */
+    font-size: 2rem; /* Adjust font size as needed */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: add shadow for readability */    
+}
+
+
+#header-logo {
+    border-radius: 50%;
+    height: 90%;
+    width: 30rem;
+    /* z-index: -1; */
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* object-fit: scale-down; */
+}
+
+/*************** NAVBAR STYLES ***************/
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* box-shadow: 0px -2px 10px #08141B; */
+}
+
+.nav-btn{
+    color: white;
+    background-color: black;
+    border: solid black;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.nav-btn>a{
+    text-decoration: none;
+    color: white;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+img.star-img {
+    height: 1rem;
+    width: 1rem;
+}
+
+img.divider.right {
+    transform: scaleX(-1);
+}
+
+img.divider {
+    width: 15%;
+    height: 1rem;
+}
+
+.carousel-item > img {
+    width: 100%;
+    vertical-align: middle;
+    height: 25rem;
+    padding-left: 5%;
+}
+
+.carousel-caption > h1, p {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    width: 21rem;
+
+}
+
+.carousel-caption > h1{
+    font-style: italic;
+}
+/*************** BOOK PAGE STYLES ***************/
+
+#first-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: space-between;
+    /* background-image: url("/img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: black;
+}
+
+.main-container{
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container{
+    display: grid;
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    height: 100%;
+    width: 70%;
+}
+
+.form-container > label,
+.form-container > input,
+.form-container > p,
+.form-container > span {
+    color: white;
+}
+
+
+.books-label {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    margin-top: 1rem;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-style: italic;
+    font-size: 3rem;
+}
+
+input#books {
+    font-family: 'Lora';
+    color: white;
+    background-color: unset;
+    margin: 10px 8px 20px 8px;
+    margin: 5px;
+    font-weight: 500;
+}
+
+.book-covers{
+    width: 13rem;
+    margin-bottom: 20px;    
+}
+
+.book-date{
+    clear: left;
+    display: block;
+    font-size: small;
+    /* font-style: italic; */
+    font-family: serif;
+    text-align: right;
+}
+
+div#book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 5%;
+    box-sizing: border-box;
+}
+
+
+/*CHAPTER PAGE STYLE*/
+
+
+.chapters-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    width: 70%;
+}
+
+.sub-title{
+    font-family: "Lora", serif;
+    font-style: italic;
+    font-size: 3rem;
+    color: white
+}
+
+.book-info{ /*Book info in chapters page*/
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 0.5fr 1fr 1fr;
+    width: 70%;
+}
+
+.book-info img {
+    vertical-align: middle;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    width: 100%;
+    padding: 10%;
+    box-sizing: border-box;
+}
+
+.book-info p{
+    width: 100%;
+}
+
+
+.chapter-card{
+    height: 20%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: solid gray;
+}
+
+.chapter-title{
+    margin: 0.5rem 0;
+}
+
+.chapter-card > p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+
+.book-description{
+    text-align: justify;
+    margin: 0px 5px;
+    padding: 0px 5px;
+}
+
+
+/*EDIT PAGE STYLE*/
+
+.edit-container {
+    width: 70%;
+    background-color: #100c1f;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 21px rgb(108 104 188);
+    display: grid;
+    gap: 1rem;
+    height: 50vh;
+    justify-content: space-around;
+    grid-template-rows: 0.5fr 3fr 0.5fr;
+    grid-template-columns: 1fr;
+}
+
+
+
+/* FOOTER STYLE*/
+
+footer > ul > li > a {
+    color: rgb(190, 190, 190) !important;
+}
+
+/*************** MEDIA QUERY STYLES ***************/
+
+@media (max-width: 600px){
+
+    .form-container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+
+    #header-logo {
+        width: 20rem;
+    }
+
+    nav{
+        display: none;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 835px){
+    .form-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 870px) and (max-width: 1230px){
+    .form-container{
+        display: grid;
+        grid-template-rows: auto 1fr 1fr auto;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 3rem;
+    }
+}
+
+@media (min-height: 900px){
+    #header-logo{
+        height: 14rem;  
+    }
+}
+
+
+/* @media (min-height: 750px) and (min-height: 750px){
+    nav {
+        margin-top: 2%;
+    }
+
+    header {
+        height: 22vh;
+    }
+
+    header img {
+        height: 13rem;
+    }
+} */

@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/carousel.ejs") %>
+</header>
+<body>
+<div class="main-container">
+    <form class="form-container" action="/" method="get">
+        <label class="books-label" for="books"> Books</label>
+        <% let bookCount = 1 %>
+        <% if(locals.books){ books.forEach(book => { %>
+            <div id="book-card">
+                <input id="books" type="submit" value="<%=book.attributes.title%>" formaction="/chapters/<%= bookCount - 1 %>"> <%# to identify the index of the book id in the array (read next line) %>
+                <input type="hidden" name="bookId" value="<%=book.id%>"><%# It will send me an array with every book id which I wil need to get their chapters%>
+                <img class="book-covers" src="/img/book<%=bookCount%>.jpg" alt="">
+                <p class="book-description"><%= book.attributes.summary.slice(0,100)%>...</p>
+                <span class="book-date"> <strong>Release Date: </strong><%=book.attributes.release_date%></span>
+                <%bookCount++%>
+            </div>
+        <%}); } else { %>
+            <h3>Failed to load</h3>
+        <% } %>
+    </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

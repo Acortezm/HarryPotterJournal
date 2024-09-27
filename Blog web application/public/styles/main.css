@@ -1,0 +1,79 @@
+.main-container{
+    height: 70vh;
+}
+
+.form-container{
+    height: 80vh;
+    display: flex;
+    margin-left: 25%;
+}
+
+.custom-label{
+    font-size: x-large;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(75, 74, 74);
+    margin-bottom: 2%;
+}
+
+#custom-entries-display{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+    align-items: left;
+    justify-content: center;
+}
+
+.custom-display{
+    display: flex;
+    width: 100%;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.custom-btn{
+    height: 50px; 
+    width: 150px}
+
+.custom-btn-container{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.custom-input-title{
+    width: 70%;
+    border: 2px rgb(131, 130, 130) solid;
+    border-radius: 5px; /* Use px for more consistent results */
+    padding: 10px; /* Adjust padding as needed */
+    text-align: left; /* Ensures text is aligned to the left */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    font-size: x-large;
+}
+
+.custom-form{
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 100%;
+}
+
+.custom-input {
+    height: 100%;
+    width: 70%; 
+    border: 2px rgb(131, 130, 130) solid;
+    border-radius: 5px; /* Use px for more consistent results */
+    padding: 10px; /* Adjust padding as needed */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    font-size:larger;
+    resize: none;
+}
+
+.custom-font{
+    font-size: x-large;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(75, 74, 74);
+    text-decoration: none;
+}
