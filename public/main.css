@@ -167,10 +167,7 @@ img.divider {
     width: 70%;
 }
 
-.form-container > label,
-.form-container > input,
-.form-container > p,
-.form-container > span {
+.form-container > label, input,  p, span {
     color: white;
 }
 
@@ -297,6 +294,10 @@ div#book-card {
     justify-content: space-around;
     grid-template-rows: 0.5fr 3fr 0.5fr;
     grid-template-columns: 1fr;
+}
+
+.edit-container > *{
+    color: black;
 }
 
 

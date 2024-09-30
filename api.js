@@ -9,36 +9,36 @@ app.listen(port, () => {
 })
 
 //////////////////////////////THIS API LACKS SECURITY PLEASE ADD /////////////////////////////////////
-
+//!Add in documentation examples of response and id is a string
 ///In-memory data store 
 
 const bookEntries = [
     {
-        id : 1, 
+        id : "0fef89ab-87f0-4e75-ae6c-67398354c723,f0c06d4c-0fa9-412b-acc0-6d1490b91731,bdbaba12-ce67-435e-9f85-5f235cae152c,543b4540-2424-46ab-9290-60c9d7af175b,ddaf1cf3-ddb3-423a-90e3-78082bbd484e,adef4db0-371b-4266-8f2b-70ef649158ff,ddac8295-0416-435a-afc8-ac31b1558e2c", 
         title : "book1 title",
         content: "book1 content",
         chapters: []
 
     }, 
     {
-        id : 2, 
+        id : "2", 
         title : "book1 title",
         content: "book1 content",
         chapters: [
             {
-                id : 1, 
+                id : "1", 
                 content : "chapter1 content"
             },
             {
-                id : 2, 
+                id : "2", 
                 content : "chapter1 content"
             },
             {
-                id : 3, 
+                id : "3", 
                 content : "chapter1 content"
             },
             {
-                id : 4, 
+                id : "4", 
                 content : "chapter1 content"
             }
         ]
@@ -62,7 +62,7 @@ app.get("/entries", (req, res) => {
 
 //book by id 
 app.get("/entries/:id", (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const entry = bookEntries.find((entry) => entry.id === id);
     if(!entry) return res.status(404).json({message : "Book not found"});
     res.json(entry)
@@ -70,7 +70,7 @@ app.get("/entries/:id", (req, res) => {
 
 //all chapters
 app.get("/entries/:id/chapters", (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const entry = bookEntries.find((entry) => entry.id === id);
     if (!entry) return res.status(404).json({message : "Book not found"});
     res.json(entry.chapters)
@@ -79,8 +79,8 @@ app.get("/entries/:id/chapters", (req, res) => {
 
 //chapter by id 
 app.get("/entries/:id/chapters/:chapterId", (req, res) => {
-    const id = parseInt(req.params.id);
-    const chapterId = parseInt(req.params.chapterId);
+    const id = req.params.id;
+    const chapterId = req.params.chapterId;
 
     const entry = bookEntries.find((entry) => entry.id === id);
     const chapter = entry?.chapters.find((chapter) => chapter.id === chapterId);
@@ -103,10 +103,10 @@ But, if the book is already in the array, it will update the information partial
 
 app.post("/entries/:id", (req, res) => {
     //before adding an entry for a book, we need to make sure that we still don't have one entry for that specific book
-    const currentEntryIndex = bookEntries.findIndex((entry) => entry.id === parseInt(req.params.id)) //if exist, we need the index to later replace it
-    const currentEntry = bookEntries.find((entry) => entry.id === parseInt(req.params.id)) //we also need the book object, if there is only parcial changes
+    const currentEntryIndex = bookEntries.findIndex((entry) => entry.id === req.params.id) //if exist, we need the index to later replace it
+    const currentEntry = bookEntries.find((entry) => entry.id === req.params.id) //we also need the book object, if there is only parcial changes
     const newEntry = { //we arrange the user input in a object 
-        id : parseInt(req.params.id), // the user can choose the id, but this will be unique and won't be replaced 
+        id : req.params.id, // the user can choose the id, but this will be unique and won't be replaced 
         title : req.body.title,
         content : req.body.content,
         chapters : []
@@ -131,11 +131,11 @@ app.post("/entries/:id", (req, res) => {
 /* ADDING NEW CHAPTER ENTRY */
 
 app.post("/entries/:id/chapters/:chapterId", (req, res) => {
-    const book = bookEntries.find((entry) => entry.id === parseInt(req.params.id))
-    const chapter = book.chapters.find((chapter) => chapter.id === parseInt(req.params.chapterId))
-    const chapterIndex = book.chapters.findIndex((chapter) => chapter.id === parseInt(req.params.chapterId))
+    const book = bookEntries.find((entry) => entry.id === req.params.id)
+    const chapter = book.chapters.find((chapter) => chapter.id === req.params.chapterId)
+    const chapterIndex = book.chapters.findIndex((chapter) => chapter.id === req.params.chapterId)
     const newChapterEntry = {
-        id : parseInt(req.params.id), // the user can choose the id, but this will be unique and won't be replaced 
+        id : req.params.id, // the user can choose the id, but this will be unique and won't be replaced 
         content : req.body.content 
     }
 
@@ -160,24 +160,24 @@ app.delete("/entries", (req, res) => {
 })
 
 app.delete("/entries/:id", (req, res) => {
-    const bookEntry = bookEntries.find((entry) => entry.id === parseInt(req.params.id))
-    const bookEntryIndex = bookEntries.findIndex((entry) => entry.id === parseInt(req.params.id))
+    const bookEntry = bookEntries.find((entry) => entry.id === req.params.id)
+    const bookEntryIndex = bookEntries.findIndex((entry) => entry.id === req.params.id)
     if (!bookEntry) return res.status(404).json({message : "Book not found"});
     bookEntry? bookEntries.splice(bookEntryIndex, 1) : null;
     res.status(202).json([{message : "Book entry was deleted"}, bookEntries])
 })
 
 app.delete("/entries/:id/chapters", (req, res) => {
-    const bookEntry = bookEntries.find((entry) => entry.id === parseInt(req.params.id));
+    const bookEntry = bookEntries.find((entry) => entry.id === req.params.id);
     if (!bookEntry) return res.status(404).json({message : "Book not found"});
     bookEntry? bookEntry.chapters = [] : null;
     res.status(202).json([{message : "All chapter entries were deleted"}, bookEntry])
 })
 
 app.delete("/entries/:id/chapters/:chapterId", (req, res) => {
-    const bookEntry = bookEntries.find((entry) => entry.id === parseInt(req.params.id));
-    const chapterEntry = bookEntry.chapters.find((entry) => entry.id === parseInt(req.params.chapterId));
-    const chapterEntryIndex = bookEntry.chapters.findIndex((entry) => entry.id === parseInt(req.params.chapterId))
+    const bookEntry = bookEntries.find((entry) => entry.id === req.params.id);
+    const chapterEntry = bookEntry.chapters.find((entry) => entry.id === req.params.chapterId);
+    const chapterEntryIndex = bookEntry.chapters.findIndex((entry) => entry.id === req.params.chapterId)
     if (!chapterEntry) return res.status(404).json({message : "Chapter not found"});
     chapterEntry? bookEntry.chapters.splice([chapterEntryIndex], 1): null;
     res.status(202).json([{message : "Chapter entry was deleted"}, bookEntry.chapters])
