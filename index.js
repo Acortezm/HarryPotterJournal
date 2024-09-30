@@ -27,12 +27,13 @@ app.get("/", async (req, res) => {
 })
 
 //TO RENDER THE CHAPTERS WITHIN A BOOK
-app.get("/chapters/:index", async (req, res) => {
-    const bookId = req.query.bookId //array of all book IDs
-    const index = parseInt(req.params.index) //the index of the book that was clicked
-    const bookApiUrl = apiUrl + "/books/" + bookId[index] //I need info from the book to render title and summary
-    const chaptersApiUrl = apiUrl + "/books/" + bookId[index] + "/chapters" //To render all chapters
+app.get("/chapters/:id", async (req, res) => {
+    const bookId = req.params.id//array of all book IDs
+    const imgSuffix =  bookId.slice(-4, -1)//the index of the book that was clicked
+    const bookApiUrl = apiUrl + "/books/" + bookId //I need info from the book to render title and summary
+    const chaptersApiUrl = apiUrl + "/books/" + bookId + "/chapters" //To render all chapters
     try{
+        console.log(imgSuffix)
         const response = await Promise.all([
             axios.get(bookApiUrl),
             axios.get(chaptersApiUrl)
@@ -41,7 +42,7 @@ app.get("/chapters/:index", async (req, res) => {
         res.render("chapters.ejs", {
             bookId : bookId,
             bookInfo : response[0].data.data.attributes,
-            bookImg : `/img/book${index+1}.jpg`,
+            bookImg : `/img/book${imgSuffix}.jpg`,
             chapters : response[1].data.data //array of all the chapters. 
         })
         
