@@ -14,7 +14,7 @@ app.listen(port, () => {
 
 const bookEntries = [
     {
-        id : "0fef89ab-87f0-4e75-ae6c-67398354c723,f0c06d4c-0fa9-412b-acc0-6d1490b91731,bdbaba12-ce67-435e-9f85-5f235cae152c,543b4540-2424-46ab-9290-60c9d7af175b,ddaf1cf3-ddb3-423a-90e3-78082bbd484e,adef4db0-371b-4266-8f2b-70ef649158ff,ddac8295-0416-435a-afc8-ac31b1558e2c", 
+        id : "0fef89ab-87f0-4e75-ae6c-67398354c723", 
         title : "book1 title",
         content: "book1 content",
         chapters: []

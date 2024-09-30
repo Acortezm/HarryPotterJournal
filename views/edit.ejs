@@ -1,8 +1,8 @@
 <%- include("partials/header.ejs") %>
 
 <div class="main-container">
+    <form class="edit-container" action="/edit/<%= bookId %>" method="post">
     <% if(locals.bookInfo){ %>
-        <form class="edit-container" action="/edit/<%= bookInfo.id %>" method="post">
             <input type="text" name="title" placeholder="Title" value="<%=bookInfo.title%>" required>
             <textarea name="content"><%= bookInfo.content %></textarea>
         <% } else { %>

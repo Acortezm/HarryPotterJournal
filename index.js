@@ -33,7 +33,7 @@ app.get("/chapters/:id", async (req, res) => {
     const bookApiUrl = apiUrl + "/books/" + bookId //I need info from the book to render title and summary
     const chaptersApiUrl = apiUrl + "/books/" + bookId + "/chapters" //To render all chapters
     try{
-        console.log(imgSuffix)
+        console.log(bookId)
         const response = await Promise.all([
             axios.get(bookApiUrl),
             axios.get(chaptersApiUrl)
@@ -69,16 +69,20 @@ app.get("/chapters/:id", async (req, res) => {
 
 app.get("/edit/:id", async (req, res) => {
     const bookId = req.params.id;
+    console.log("in edit: " + bookId)
     try{
         const response = await axios.get(internalApi + "entries/" + bookId)
         console.log(response.data)
         res.render("edit.ejs", {
+            bookId : bookId,
             bookInfo : response.data
         })
 
     } catch(error){
         if(error.status == 404){
-            res.render("edit.ejs")
+            res.render("edit.ejs", {
+                bookId : bookId
+            })
         } else {
             console.log(error.message)
         }
@@ -93,7 +97,8 @@ app.post("/edit/:id", async (req, res) => {
             title : req.body.title,
             content : req.body.content,
         })
-        res.redirect("/")
+        console.log(response)
+        res.redirect("/chapters/" + bookId)
     } catch (error){
         console.log(error.message)
     }
