@@ -21,24 +21,28 @@ const bookEntries = [
 
     }, 
     {
-        id : "2", 
+        id : "f0c06d4c-0fa9-412b-acc0-6d1490b91731", 
         title : "book1 title",
         content: "book1 content",
         chapters: [
             {
-                id : "1", 
+                id : "afff3a3b-3c0f-422b-8652-14454d1c63c9", 
+                title: "hola, juanito",
                 content : "chapter1 content"
             },
             {
                 id : "2", 
+                title: "hola, juanito",
                 content : "chapter1 content"
             },
             {
                 id : "3", 
+                title: "hola, juanito",
                 content : "chapter1 content"
             },
             {
                 id : "4", 
+                title: "hola, juanito",
                 content : "chapter1 content"
             }
         ]
@@ -136,6 +140,7 @@ app.post("/entries/:id/chapters/:chapterId", (req, res) => {
     const chapterIndex = book.chapters.findIndex((chapter) => chapter.id === req.params.chapterId)
     const newChapterEntry = {
         id : req.params.id, // the user can choose the id, but this will be unique and won't be replaced 
+        title: req.body.title,
         content : req.body.content 
     }
 

@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<div class="main-container">
+    <form class="edit-container" action="/edit/<%= bookId%>/chapters/<%=chapterId%>" method="post">
+    <% if(locals.chapterInfo){ %>
+          <div class="mb-3">
+            <input type="text" name="title" class="form-control" placeholder="Title" value="<%=chapterInfo.title%>" required>
+          </div>
+          <div class="mb-3">
+            <textarea name="content" class="form-control lh-base" rows="3"><%= chapterInfo.content %></textarea>
+          </div>
+    <% } else { %>
+        <div class="mb-3">
+            <input type="text" name="title" class="form-control" placeholder="Title" value="" required>
+          </div>
+          <div class="mb-3">
+            <textarea name="content" class="form-control" rows="3"></textarea>
+          </div>
+    <% } %>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-outline-primary h-10" type="submit">Save</button>
+            <a class="btn btn-outline-danger" href="/edit/<%= bookId%>/chapters/<%=chapterId%>/delete">Delete</a>
+        </div>
+        
+    </form>
+</div>
+
+
+<%- include("partials/footer.ejs") %>

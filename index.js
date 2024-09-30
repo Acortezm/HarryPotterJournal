@@ -5,6 +5,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { render } from "ejs";
 import { error } from "console";
+import { title } from "process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express()
@@ -66,7 +67,6 @@ app.get("/chapters/:id", async (req, res) => {
 
 app.get("/edit/:id", async (req, res) => {
     const bookId = req.params.id;
-    console.log("in edit: " + bookId)
     try{
         const response = await axios.get(internalApi + "entries/" + bookId)
         console.log(response.data)
@@ -94,7 +94,7 @@ app.post("/edit/:id", async (req, res) => {
             title : req.body.title,
             content : req.body.content,
         })
-        console.log(response)
+        console.log(response.data)
         res.redirect("/chapters/" + bookId)
     } catch (error){
         console.log(error.message)
@@ -106,6 +106,65 @@ app.get("/edit/:id/delete", async (req, res) => {
     const bookId = req.params.id; 
     try{
         const response = await axios.delete(internalApi + "entries/" + bookId)
+        res.redirect("/chapters/" + bookId)
+    }catch(error){
+        console.log(error.message)
+        res.redirect("/chapters/" + bookId)
+    }
+})
+
+//TO RENDER THE EDIT PAGE FOR CHAPTERS
+app.get("/edit/:bookId/chapters/:chapterId", async (req, res) => {
+    const bookId = req.params.bookId;
+    const chapterId = req.params.chapterId;
+    try{
+        const response = await axios.get(internalApi + "entries/" + bookId + "/chapters/" + chapterId)
+        console.log(response.data)
+        res.render("editChapters.ejs", {
+            bookId : bookId,
+            chapterInfo : response.data,
+            chapterId : chapterId,
+        })
+    } catch (error){
+        if( error.status === 404) {
+            res.render("editChapters.ejs", {
+                bookId : bookId,
+                chapterId : chapterId,
+            })
+            console.log(error.message)
+            } else {
+            console.log(error.message)
+        }
+    }
+
+})
+
+//To post a chapter 
+
+app.post("/edit/:bookId/chapters/:chapterId", async (req, res) => {
+    const bookId = req.params.bookId;
+    const chapterId = req.params.chapterId;
+    try{
+        const response = await axios.post(internalApi + "entries/" + bookId + "/chapters/" + chapterId, {
+            id : chapterId,
+            title : req.body.title,
+            content : req.body.content,
+        })
+        console.log(response.data)
+        res.redirect("/chapters/" + bookId)
+    }catch(error){
+        console.log(error.message)
+        res.redirect("/chapters/" + bookId)
+    }
+})
+
+//TO DELETE A  CHAPTERS
+
+app.get("/edit/:bookId/chapters/:chapterId/delete", async (req, res) => {
+    const bookId = req.params.bookId;
+    const chapterId = req.params.chapterId;
+    try{
+        const response = await axios.delete(internalApi + "entries/" + bookId + "/chapters/" + chapterId)
         res.redirect("/chapters/" + bookId)
     }catch(error){
         console.log(error.message)

@@ -286,6 +286,11 @@ div#book-card {
     width: 70%;
 }
 
+th{
+    background-color: #1b1e27 !important;
+}
+
+
 .sub-title{
     font-family: "Lora", serif;
     font-style: italic;
