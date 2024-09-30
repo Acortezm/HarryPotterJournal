@@ -18,10 +18,54 @@ body{
 }
 
 *{
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+}
+
+/**/
+
+/* Main Title (e.g., Book Titles) */
+.title-main {
+    font-family: "Lora", serif;
+    font-size: 4rem;
+    font-style: italic;
+    color: #4F2675; /* Purple tone for a standout look */
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+/* Subtitle 1 (e.g., Book Cover Titles) */
+.subtitle-1 {
+    font-family: "Lora", serif;
+    font-size: 2.5rem;
+    font-style: normal;
+    color: #2C506C; /* Blue tone */
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+/* Subtitle 2 (e.g., Chapter Titles) */
+.subtitle-2 {
+    font-family: "Lora", serif;
+    font-size: 2rem;
+    font-style: normal;
+    color: #088895; /* Another shade of blue */
+    text-align: left;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+/* General Text */
+.text-body {
+    font-family: "Lora", serif;
+    font-size: 1.5rem;
+    color: white;
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 
@@ -39,7 +83,7 @@ header{
     position: relative; /* Set relative position to contain the absolute element */
     display: inline-block;
     height: 25vh;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid ;
     padding-bottom: 10px;
 }
 
@@ -122,7 +166,8 @@ img.divider {
     padding-left: 5%;
 }
 
-.carousel-caption > h1, p {
+.carousel-caption > h1, 
+.carousel-caption > p {
     font-family: "Lora", serif;
     font-optical-sizing: auto;
     font-weight: 200;
@@ -145,7 +190,7 @@ img.divider {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; */
-    background-color: black;
+    background-color: #000001;
 }
 
 .main-container{
@@ -156,6 +201,9 @@ img.divider {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    background-image: url("./img/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .form-container{
@@ -168,7 +216,7 @@ img.divider {
 }
 
 .form-container > label, input,  p, span {
-    color: white;
+    color: rgb(201, 201, 201);
 }
 
 
@@ -180,6 +228,7 @@ img.divider {
     font-optical-sizing: auto;
     font-style: italic;
     font-size: 3rem;
+    color: white !important;
 }
 
 input#books {
@@ -189,6 +238,16 @@ input#books {
     margin: 10px 8px 20px 8px;
     margin: 5px;
     font-weight: 500;
+}
+
+.card{
+    background-color: transparent !important;
+    border: 1px solid #ffc107 !important;  
+}
+
+.card-title {
+    font-weight: 400;
+    color: white !important;
 }
 
 .book-covers{
@@ -237,21 +296,26 @@ div#book-card {
 .book-info{ /*Book info in chapters page*/
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 0.5fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
     width: 70%;
 }
 
 .book-info img {
     vertical-align: middle;
     grid-row-start: 1;
-    grid-row-end: -1;
+    grid-row-end: 3;
     width: 100%;
-    padding: 10%;
+    padding: 5% 10%;
     box-sizing: border-box;
 }
 
 .book-info p{
     width: 100%;
+}
+
+#book-thoughts-card {
+    grid-column-start: 1;
+    grid-column-end: -1;
 }
 
 
@@ -284,20 +348,26 @@ div#book-card {
 
 .edit-container {
     width: 70%;
-    background-color: #100c1f;
+    /* background-color: #100c1f; */
     padding: 20px 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 21px rgb(108 104 188);
+    box-shadow: 0 4px 21px #bda569;
     display: grid;
     gap: 1rem;
     height: 50vh;
+    padding-top: 2rem;
     justify-content: space-around;
-    grid-template-rows: 0.5fr 3fr 0.5fr;
+    grid-template-rows: 0.5fr 3fr auto;
     grid-template-columns: 1fr;
 }
 
 .edit-container > *{
     color: black;
+    
+}
+
+textarea.form-control{
+    height: 100% !important;
 }
 
 
@@ -307,6 +377,8 @@ div#book-card {
 footer > ul > li > a {
     color: rgb(190, 190, 190) !important;
 }
+
+
 
 /*************** MEDIA QUERY STYLES ***************/
 

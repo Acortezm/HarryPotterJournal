@@ -6,12 +6,16 @@
     <form class="form-container" action="/" method="get">
         <label class="books-label" for="books"> Books</label>
         <% if(locals.books){ books.forEach(book => { %>
-            <div id="book-card">
-                <input id="books" type="submit" value="<%=book.attributes.title%>" formaction="/chapters/<%= book.id%>"> <%# to identify the book that was clicked %>
-                <img class="book-covers" src="/img/book<%=book.id.slice(-4, -1)%>.jpg" alt="">
-                <p class="book-description"><%= book.attributes.summary.slice(0,100)%>...</p>
-                <span class="book-date"> <strong>Release Date: </strong><%=book.attributes.release_date%></span>
-            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="/img/book<%=book.id.slice(-4, -1)%>.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><%=book.attributes.title%></h5>
+                    <p class="card-text"><%= book.attributes.summary.slice(0,100)%>...</p>
+                    <span class="book-date"> <strong>Release Date: </strong><%=book.attributes.release_date%></span>
+                    <input id="books" class="btn btn-primary" type="submit" value="Leave thoughts" formaction="/chapters/<%= book.id%>"> <%# to identify the book that was clicked %>
+                </div>
+              </div>
         <%}); } else { %>
             <h3>Failed to load</h3>
         <% } %>

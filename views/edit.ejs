@@ -3,16 +3,24 @@
 <div class="main-container">
     <form class="edit-container" action="/edit/<%= bookId %>" method="post">
     <% if(locals.bookInfo){ %>
-            <input type="text" name="title" placeholder="Title" value="<%=bookInfo.title%>" required>
-            <textarea name="content"><%= bookInfo.content %></textarea>
-            <button type="submit">Save</button>
-            <button><a href="/edit/<%= bookId %>/delete">Delete</a></button>
+              <div class="mb-3">
+                <input type="text" name="title" class="form-control" placeholder="Title" value="<%=bookInfo.title%>" required>
+              </div>
+              <div class="mb-3">
+                <textarea name="content" class="form-control lh-base" rows="3"><%= bookInfo.content %></textarea>
+              </div>
         <% } else { %>
-            <input type="text" name="title" placeholder="Title" required>
-            <textarea name="content"></textarea>
-            <button type="submit">Save</button>
-            <button disabled><a href="/edit/<%= bookId %>/delete">Delete</a></button>
+            <div class="mb-3">
+                <input type="text" name="title" class="form-control" placeholder="Title" value="" required>
+              </div>
+              <div class="mb-3">
+                <textarea name="content" class="form-control" rows="3"></textarea>
+              </div>
         <% } %>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-outline-primary h-10" type="submit">Save</button>
+            <a class="btn btn-outline-danger" href="/edit/<%= bookId %>/delete">Delete</a>
+        </div>
         
     </form>
 </div>

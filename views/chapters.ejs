@@ -1,18 +1,20 @@
 <%- include("partials/header.ejs") %>
 </header>
 <body>
-<div class="main-container">
+    <div class="main-container">
     <section class="book-info">
         <img src="<%= locals.bookImg ? bookImg : ''%>" alt="">
         <% if(locals.bookInfo){ %>
             <h1 class="sub-title"><%= bookInfo.title%> </h1>
             <p><%= bookInfo.summary%></p>
         <% }%>
-        <div>
-            <h2>My thoughts</h2>
-            <p><%= bookEntry ? bookEntry : "No thoughts found"%></p>
-            <button><a href="/edit/<%=bookId%>">Add thoughts</a></button>
-        </div>
+        <div class="card mb-3" id="book-thoughts-card">
+            <div class="card-body">
+              <h5 class="card-title ">My thoughts</h5>
+              <p class="card-text"><%= bookEntry ? bookEntry.slice(0,200)+"..." : "No thoughts found"%></p>
+              <a href="/edit/<%=bookId%>" class="btn btn-outline-primary"> <%= bookEntry ? "Edit thoughts": "Add thoughts"%> </a>
+            </div>
+          </div>
     </section>
     <form class="chapters-container" action="/" method="get">
         <label for="books" class="sub-title"> Chapters </label>
@@ -21,7 +23,7 @@
                 <div class="chapter-card">
                     <input class="chapter-title" id="books" type="submit" value="<%= chapter.attributes.title %>" formaction="/chapter/edit/:id">
                     <p><%= chapter.attributes.summary? chapter.attributes.summary.slice(0,200) : "Sumary not available"%></p>
-                </div>          
+                </div>         
             <% }); %>
             <%  %>
         <% }else { %>
@@ -29,5 +31,5 @@
         <% } %>
     </form>
 </div>
-
+</body>
 <%- include("partials/footer.ejs") %>
