@@ -152,13 +152,15 @@ app.post("/entries/:id/chapters/:chapterId", (req, res) => {
 
 //////////////// DELETE HANDLERS //////////////////
 
-
+///Delete everything
 app.delete("/entries", (req, res) => {
     bookEntries = []
     res.status(200)
     res.json({message : "All entries were deleted successfully"})
 })
 
+
+///Delete content of a book
 app.delete("/entries/:id", (req, res) => {
     const bookEntry = bookEntries.find((entry) => entry.id === req.params.id)
     const bookEntryIndex = bookEntries.findIndex((entry) => entry.id === req.params.id)
@@ -167,6 +169,8 @@ app.delete("/entries/:id", (req, res) => {
     res.status(202).json([{message : "Book entry was deleted"}, bookEntries])
 })
 
+
+///Delete chapters of a book
 app.delete("/entries/:id/chapters", (req, res) => {
     const bookEntry = bookEntries.find((entry) => entry.id === req.params.id);
     if (!bookEntry) return res.status(404).json({message : "Book not found"});
@@ -174,6 +178,7 @@ app.delete("/entries/:id/chapters", (req, res) => {
     res.status(202).json([{message : "All chapter entries were deleted"}, bookEntry])
 })
 
+//Delete specific chapter
 app.delete("/entries/:id/chapters/:chapterId", (req, res) => {
     const bookEntry = bookEntries.find((entry) => entry.id === req.params.id);
     const chapterEntry = bookEntry.chapters.find((entry) => entry.id === req.params.chapterId);

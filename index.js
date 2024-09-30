@@ -4,6 +4,7 @@ import bodyParser from "body-parser"
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { render } from "ejs";
+import { error } from "console";
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express()
@@ -32,18 +33,28 @@ app.get("/chapters/:id", async (req, res) => {
     const imgSuffix =  bookId.slice(-4, -1)//the index of the book that was clicked
     const bookApiUrl = apiUrl + "/books/" + bookId //I need info from the book to render title and summary
     const chaptersApiUrl = apiUrl + "/books/" + bookId + "/chapters" //To render all chapters
+    const bookEntryApiUrl = internalApi + "entries/" + bookId
+    debugger
     try{
         console.log(bookId)
-        const response = await Promise.all([
+        const [book, chapters, bookEntry] = await Promise.all([
             axios.get(bookApiUrl),
-            axios.get(chaptersApiUrl)
+            axios.get(chaptersApiUrl),
+            axios.get(bookEntryApiUrl).catch(error => {
+                if (error.message && error.status === 404){
+                    console.log("Book entry not found")
+                } else {
+                    console.error("Failed to fetch book entry:", error.message)
+                }
+            })
         ])
-
+        console.log(bookEntry)
         res.render("chapters.ejs", {
             bookId : bookId,
-            bookInfo : response[0].data.data.attributes,
+            bookInfo : book.data.data.attributes,
+            bookEntry : bookEntry ? bookEntry.data.content : null,
             bookImg : `/img/book${imgSuffix}.jpg`,
-            chapters : response[1].data.data //array of all the chapters. 
+            chapters : chapters.data.data,
         })
         
     }catch(error){
@@ -52,20 +63,6 @@ app.get("/chapters/:id", async (req, res) => {
 })
 
 //TO RENDER THE EDIT PAGE 
-
-/*TODO LIST: 
-
-1)we need to check what book clicked on it needs to send the book id
-2)We need to ask if that book id has an entry
-3) if it does have an entry we need to auto-fill the form
-    a) if save btn is clicked send a post request with the book id to update info
-4) if it doesn't exist, just render an empty form
-    a) when save button is clicked we need send a post request with the book id to identify it later
-6) add delete button 
-7) when delete button is clicked it needs to send the id of book we want to delete
-8) send delete request
-
-*/
 
 app.get("/edit/:id", async (req, res) => {
     const bookId = req.params.id;
@@ -101,6 +98,18 @@ app.post("/edit/:id", async (req, res) => {
         res.redirect("/chapters/" + bookId)
     } catch (error){
         console.log(error.message)
+    }
+})
+
+//TO DELETE BOOK ENTRY 
+app.get("/edit/:id/delete", async (req, res) => {
+    const bookId = req.params.id; 
+    try{
+        const response = await axios.delete(internalApi + "entries/" + bookId)
+        res.redirect("/chapters/" + bookId)
+    }catch(error){
+        console.log(error.message)
+        res.redirect("/chapters/" + bookId)
     }
 })
 
