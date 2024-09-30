@@ -7,7 +7,7 @@
         <label class="books-label" for="books"> Books</label>
         <% if(locals.books){ books.forEach(book => { %>
             <div id="book-card">
-                <input id="books" type="submit" value="<%=book.attributes.title%>" formaction="/chapters/<%= book.id%>"> <%# to identify the index of the book id in the array (read next line) %>
+                <input id="books" type="submit" value="<%=book.attributes.title%>" formaction="/chapters/<%= book.id%>"> <%# to identify the book that was clicked %>
                 <img class="book-covers" src="/img/book<%=book.id.slice(-4, -1)%>.jpg" alt="">
                 <p class="book-description"><%= book.attributes.summary.slice(0,100)%>...</p>
                 <span class="book-date"> <strong>Release Date: </strong><%=book.attributes.release_date%></span>
