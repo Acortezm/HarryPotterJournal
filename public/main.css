@@ -294,21 +294,21 @@ th{
 .sub-title{
     font-family: "Lora", serif;
     font-style: italic;
-    font-size: 3rem;
+    font-size: 2rem;
     color: white
 }
 
 .book-info{ /*Book info in chapters page*/
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 0.5fr 1fr 0.5fr;
+    grid-template-rows: auto 1fr 0.5fr;
     width: 70%;
 }
 
 .book-info img {
     vertical-align: middle;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 4;
     width: 100%;
     padding: 5% 10%;
     box-sizing: border-box;
@@ -317,12 +317,6 @@ th{
 .book-info p{
     width: 100%;
 }
-
-#book-thoughts-card {
-    grid-column-start: 1;
-    grid-column-end: -1;
-}
-
 
 .chapter-card{
     height: 20%;
@@ -399,15 +393,58 @@ footer > ul > li > a {
         width: 20rem;
     }
 
-    nav{
+    /* nav {
         display: none;
+    } */
+
+    nav > img.divider.left, nav > img.divider.right {
+        display: none;
+    }
+
+    .book-info {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .sub-title {
+        font-size: 1.5rem;
+        padding-left: 5%;
+    }
+
+    .book-info > p {
+        padding-left: 5%;
+        text-align: justify;
     }
 }
 
-@media (min-width: 600px) and (max-width: 835px){
+
+@media (min-width: 600px) and (max-width: 870px){
     .form-container{
         grid-template-columns: 1fr;
     }
+
+    .book-info {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+}
+
+@media (min-width: 870px) and (max-width: 1120px){
+    .form-container{
+        grid-template-columns: 1fr;
+    }
+
+    #book-thoughts-card {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
+    .book-info img {
+        grid-row-end: 3;
+    }
+
 }
 
 @media (min-width: 870px) and (max-width: 1230px){
@@ -425,17 +462,3 @@ footer > ul > li > a {
     }
 }
 
-
-/* @media (min-height: 750px) and (min-height: 750px){
-    nav {
-        margin-top: 2%;
-    }
-
-    header {
-        height: 22vh;
-    }
-
-    header img {
-        height: 13rem;
-    }
-} */
